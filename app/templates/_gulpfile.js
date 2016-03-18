@@ -2,20 +2,20 @@
 'use strict';
 
 // Include Gulp & Tools We'll Use
-let gulp = require('gulp');
-let $ = require('gulp-load-plugins')();
-let rimraf = require('rimraf');
-let runSequence = require('run-sequence');
-let browserSync = require('browser-sync');
-let through2 = require('through2');
-let browserify = require('browserify');
-let path = require('path');
-let reload = browserSync.reload;
-let yargs = require('yargs').argv;
-let minify = yargs.minify ? true : false;
-let tunnel = yargs.tunnel ? yargs.tunnel : false;
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const rimraf = require('rimraf');
+const runSequence = require('run-sequence');
+const browserSync = require('browser-sync');
+const through2 = require('through2');
+const browserify = require('browserify');
+const path = require('path');
+const reload = browserSync.reload;
+const yargs = require('yargs').argv;
+const minify = yargs.minify ? true : false;
+const tunnel = yargs.tunnel ? yargs.tunnel : false;
 
-let config = require('./config.json');
+const config = require('./config.json');
 
 yargs.ftpDeploy = yargs.ftpDeploy || {};
 config.ftpDeploy.host = yargs.ftpDeploy.host || '';

@@ -205,7 +205,7 @@ module.exports = yo.generators.Base.extend({
 		this.npmInstall(devDependencies, {saveDev: true});
 
 		// install extra dependencies:
-		var dependencies = this.props.dependencies;
+		var dependencies = this.props.dependencies || [];
 		if (this.props.useSasslint) {
 			dependencies.push('sass-lint');
 			dependencies.push('gulp-sass-lint');
