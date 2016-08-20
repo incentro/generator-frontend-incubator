@@ -47,7 +47,7 @@ Coding conventions
 ------------------
 
 #### Javascript
-It is recommended to use the [google javascript style guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml) as a base for coding style.
+It is recommended to use the [google javascript style guide](https://google.github.io/styleguide/javascriptguide.xml) as a base for coding style.
 
 #### SCSS ( CSS )
 <% if (itcss) { -%>
