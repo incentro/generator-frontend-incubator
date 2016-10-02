@@ -1,10 +1,11 @@
+{% set pageTitle = pageTitle|default('') %}
 <!doctype html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{% block pageTitle %}Page title{% endblock%}</title>
+	<title>{{pageTitle}}</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=2" name="viewport">
     <meta name="mobile-web-app-capable" content="yes">

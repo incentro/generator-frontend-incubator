@@ -1,17 +1,18 @@
 'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-generator').test;
 
-describe('generator-frontend-incubator:app', function () {
-	describe('default settings', function () {
-		before(function (done) {
-			helpers.run(path.join(__dirname, '../app'))
+const path = require('path');
+const assert = require('yeoman-assert');
+const test = require('yeoman-test');
+
+describe('generator-frontend-incubator:app', () => {
+	describe('default settings', () => {
+		before((done) => {
+			test.run(path.join(__dirname, '../app'))
 				.withPrompts({projectName: 'testing-project'})
 				.on('end', done);
 		});
 
-		it('creates config files', function () {
+		it('creates config files', () => {
 
 			assert.file([
 				'.editorconfig',
@@ -27,11 +28,11 @@ describe('generator-frontend-incubator:app', function () {
 			]);
 		});
 
-		it('configures config files', function () {
+		it('configures config files', () => {
 			assert.fileContent('package.json', '"name": "testing-project"');
 		});
 
-		it('creates assets', function () {
+		it('creates assets', () => {
 			assert.file([
 				'src/asset/scss/components/_components.scss',
 				'src/asset/scss/site.scss',
@@ -41,7 +42,7 @@ describe('generator-frontend-incubator:app', function () {
 			]);
 		});
 
-		it('creates prototype', function () {
+		it('creates prototype', () => {
 			assert.file([
 				'src/prototype/template/index.html',
 				'src/prototype/webroot'

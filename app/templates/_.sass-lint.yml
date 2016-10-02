@@ -15,10 +15,6 @@ rules:
   class-name-format:
     - 2
     - convention: strictbem
-  clean-import-paths:
-    - 2
-    - filename-extension: false
-      leading-underscore: false
   empty-line-between-blocks:
     - 1
     - include: true
@@ -50,7 +46,6 @@ rules:
   nesting-depth:
     - 2
     - max-depth: 5
-  no-color-keyword: 1
   no-color-literals: 0
   no-css-comments: 0
   no-debug: 1
@@ -72,11 +67,7 @@ rules:
       allow-element-with-id: false
   no-trailing-zero: 0
   no-url-protocols: 2
-  no-vendor-prefixes:
-    - 1
-    - additional-identifiers: []
-      excluded-identifiers: []
-  no-warn: 1
+  no-warn: 0
   one-declaration-per-line: 1
   placeholder-in-extend: 1
   placeholder-name-format: 0
