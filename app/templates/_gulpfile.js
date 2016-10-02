@@ -4,7 +4,7 @@
 // Include Gulp & Tools We'll Use
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-const rimraf = require('rimraf');
+const del = require('del');
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync');
 const through2 = require('through2');
@@ -104,13 +104,9 @@ gulp.task('compile:js', () => {
 gulp.task('compile:css', () => {
 	return gulp.src(config.path.src.asset.scss + '/*.scss')
 
-		.pipe($.sass({precision: 8}))
-
-		.on('error', (error) => {
-			console.log(error);
-		})
-
-		.pipe($.plumber())
+        	.pipe($.sass({
+        		precision: 8
+        	}).on('error', $.sass.logError))
 
 		.pipe($.ignore('**/*.css.map'))
 
@@ -218,7 +214,7 @@ gulp.task('verify:js', () => {
 		.pipe($.jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('verify:css', function () {
+gulp.task('verify:css', () => {
 <% if (useSasslint) { -%>
 	gulp.src(config.path.src.asset.scss + '/**/*.scss')
 		.pipe($.plumber())
@@ -230,9 +226,7 @@ gulp.task('verify:css', function () {
 
 // Clean Output Directories
 gulp.task('clean', (cb) => {
-	rimraf(config.path.build.root, () => {
-		$.cache.clearAll(cb);
-	});
+	return del(config.path.build.root);
 });
 
 
@@ -284,7 +278,7 @@ gulp.task('serve', ['compile'], () => {
 gulp.task('default', ['help']);
 
 
-gulp.task('help', function () {
+gulp.task('help', () => {
 	gulp.src('./tasks.json')
 		.pipe($.list());
 });

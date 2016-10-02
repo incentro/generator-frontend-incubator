@@ -1,11 +1,10 @@
 'use strict';
-var yo = require('yeoman-generator'),
-	art = require('./art'),
-	chalk = require('chalk'),
-	yosay = require('yosay'),
-	mkdirp = require('mkdirp'),
-	path = require('path'),
-	config = require('./config.json');
+const yo = require('yeoman-generator');
+const art = require('./art');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const path = require('path');
+const config = require('./config.json');
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // initializing - Your initialization methods (checking current project state, getting configs, etc)
@@ -18,12 +17,12 @@ var yo = require('yeoman-generator'),
 // end - Called last, cleanup, say good bye, etc
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-module.exports = yo.generators.Base.extend({
+module.exports = yo.Base.extend({
 	constructor: function (arg, options) {
-		yo.generators.Base.apply(this, arguments);
+		yo.Base.apply(this, arguments);
 		this.settings = config;
 
-		for (var i = 0; i < arguments.length; i = i + 1) {
+		for (let i = 0; i < arguments.length; i = i + 1) {
 			if (arguments[i]['skipInstall'] || arguments[i]['skip-install']) {
 				this.log(yosay(
 					'Hi there, the ' + chalk.bold(chalk.green('frontend-incubator')) +
@@ -34,14 +33,14 @@ module.exports = yo.generators.Base.extend({
 		}
 	},
 	prompting: function () {
-		var done = this.async();
+		let done = this.async();
 
 		if (!this.skipDefault) {
 			// Have the Incentronaut greet the user.
 			this.log(art.incentronaut);
 		}
 
-		var prompts = [{
+		let prompts = [{
 			name: 'projectName',
 			message: 'What is the name of your project?',
 			default: path.basename(process.cwd())
@@ -88,30 +87,29 @@ module.exports = yo.generators.Base.extend({
 			name: 'ftpHost',
 			message: 'FTP host',
 			type: 'input',
-			when: function (answers) {
+			when: (answers) => {
 				return answers.configureFTP;
 			}
 		}, {
 			name: 'ftpUser',
 			message: 'FTP username',
 			type: 'input',
-			when: function (answers) {
+			when: (answers) => {
 				return answers.configureFTP;
 			}
 		}, {
 			name: 'ftpPass',
 			message: 'FTP password',
 			type: 'password',
-			when: function (answers) {
+			when: (answers) => {
 				return answers.configureFTP;
 			}
 		}];
 
 
-		this.prompt(prompts, function (props) {
-			this.props = props;
+		return this.prompt(prompts).then(function (answers) {
+			this.props = answers;
 			done();
-
 		}.bind(this));
 	},
 
@@ -119,7 +117,8 @@ module.exports = yo.generators.Base.extend({
 
 		this.fs.copyTpl(
 			this.templatePath('_package.json'),
-			this.destinationPath('package.json'), {
+			this.destinationPath('package.json'),
+			{
 				name: this.props.projectName,
 				version: this.props.projectVersion
 			}
@@ -127,7 +126,8 @@ module.exports = yo.generators.Base.extend({
 
 		this.fs.copyTpl(
 			this.templatePath('_config.json'),
-			this.destinationPath('config.json'), {
+			this.destinationPath('config.json'),
+			{
 				paths: this.settings.paths,
 				esVersion: this.props.es2015orLoose ? 'es2015-loose' : 'es2015',
 				ftp: {
@@ -140,18 +140,19 @@ module.exports = yo.generators.Base.extend({
 
 		this.fs.copyTpl(
 			this.templatePath('_README.md'),
-			this.destinationPath('README.md'), {
+			this.destinationPath('README.md'),
+			{
 				name: this.props.projectName,
 				itcss: this.props.itcss
 			}
 		);
 
-		var simpleCopyFiles = ['.editorconfig', '.gitattributes', '.gitignore', '.jshintrc', 'gulpfile.js', 'tasks.json'];
+		let simpleCopyFiles = ['.editorconfig', '.gitattributes', '.gitignore', '.jshintrc', 'gulpfile.js', 'tasks.json'];
 		if (this.props.useSasslint) {
 			simpleCopyFiles.push('.sass-lint.yml');
 		}
 
-		for (var i = 0; i < simpleCopyFiles.length; i++) {
+		for (let i = 0; i < simpleCopyFiles.length; i++) {
 			this.fs.copyTpl(
 				this.templatePath('_' + simpleCopyFiles[i]),
 				this.destinationPath(simpleCopyFiles[i]),
@@ -161,7 +162,7 @@ module.exports = yo.generators.Base.extend({
 			);
 		}
 
-		var paths = this.settings.paths.src,
+		let paths = this.settings.paths.src,
 			keep = '/.keep',
 			keepText = 'remove this file when you\'ve added content to this folder',
 			stylePath = paths.asset.scss;
@@ -195,20 +196,20 @@ module.exports = yo.generators.Base.extend({
 	},
 
 	install: function () {
-		var useLoosePreset = this.props.es2015orLoose;
-		var devDependencies = this.settings.dependencies;
+		let useLoosePreset = this.props.es2015orLoose;
+		let devDependencies = this.settings.dependencies;
 		if (useLoosePreset === true) {
 			devDependencies.push('babel-preset-es2015-loose');
+		}
+		if (this.props.useSasslint) {
+			devDependencies.push('sass-lint');
+			devDependencies.push('gulp-sass-lint');
 		}
 		devDependencies.push('babel-preset-es2015');
 		this.npmInstall(devDependencies, {saveDev: true});
 
 		// install extra dependencies:
-		var dependencies = this.props.dependencies || [];
-		if (this.props.useSasslint) {
-			dependencies.push('sass-lint');
-			dependencies.push('gulp-sass-lint');
-		}
+		let dependencies = this.props.dependencies || [];
 		if (dependencies && dependencies.length > 0) {
 			this.npmInstall(dependencies, {save: true});
 		}

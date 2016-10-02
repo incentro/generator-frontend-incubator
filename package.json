@@ -1,6 +1,6 @@
 {
   "name": "generator-frontend-incubator",
-  "version": "0.3.0",
+  "version": "0.5.3",
   "description": "Generator for the Incentro Frontend Incubator",
   "repository": "incentro/generator-frontend-incubator",
   "keywords": [
@@ -20,21 +20,20 @@
     "app"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.22.5",
-    "chalk": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "yosay": "^1.0.2"
+    "yeoman-generator": "^0.23.3",
+    "chalk": "^1.1.1",
+    "yosay": "^1.1.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-mocha": "^2.0.0",
-    "gulp-nsp": "^2.1.0",
-    "gulp-plumber": "^1.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nsp": "^2.3.1",
+    "gulp-plumber": "^1.1.0",
     "path": "^0.12.7",
-    "yeoman-assert": "^2.0.0"
+    "yeoman-assert": "^2.1.1"
   },
   "scripts": {
     "prepublish": "gulp prepublish",

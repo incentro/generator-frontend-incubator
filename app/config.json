@@ -72,7 +72,7 @@
     "jshint-stylish",
     "kss",
     "nwmatcher",
-    "rimraf",
+    "del",
     "run-sequence",
     "through2",
     "yargs"

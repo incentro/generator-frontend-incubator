@@ -6,7 +6,7 @@
     "npm": ">=3.5.3"
   },
   "scripts": {
-    "deploy": "npm install; node ./node_modules/gulp/bin/gulp.js clean; node ./node_modules/gulp/bin/gulp.js build --minify"
+    "deploy": "npm install; node ./node_modules/gulp/bin/gulp.js clean; node ./node_modules/gulp/bin/gulp.js compile --minify"
   },
   "private": true
 }

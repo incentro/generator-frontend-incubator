@@ -1,3 +1,106 @@
+### development artifacts ###
+
+build
+node
 node_modules
+bower_components
+tmp
 coverage
 npm-debug.log
+
+# test artifacts
+
+test-results.xml
+
+# SASS
+
+*.sass-cache
+
+
+
+### IDE ###
+
+# IntelliJ / Webstorm
+
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+atlassian-ide-plugin.xml
+
+
+
+# Eclipse
+
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+
+# External tool builders
+
+.externalToolBuilders/
+
+
+# Locally stored "Eclipse launch configurations"
+
+*.launch
+
+
+# CDT-specific
+
+.cproject
+
+
+# PDT-specific
+
+.buildpath
+
+
+
+# SublimeText project files
+
+*.sublime-workspace
+
+
+
+
+### OS specific ###
+
+# OSX
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+
+# Windows
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+
+Desktop.ini
+
+# Recycle Bin used on file shares
+
+$RECYCLE.BIN/
+target/
