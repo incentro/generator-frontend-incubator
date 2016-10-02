@@ -1,5 +1,6 @@
 'use strict';
 var yo = require('yeoman-generator'),
+	art = require('./art'),
 	chalk = require('chalk'),
 	yosay = require('yosay'),
 	mkdirp = require('mkdirp'),
@@ -36,10 +37,8 @@ module.exports = yo.generators.Base.extend({
 		var done = this.async();
 
 		if (!this.skipDefault) {
-			// Have Yeoman greet the user.
-			this.log(yosay(
-				'Welcome to the ' + chalk.bold.green('frontend-incubator') + ' generator!'
-			));
+			// Have the Incentronaut greet the user.
+			this.log(art.incentronaut);
 		}
 
 		var prompts = [{
