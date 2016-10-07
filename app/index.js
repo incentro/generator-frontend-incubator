@@ -1,5 +1,6 @@
 'use strict';
 const yo = require('yeoman-generator');
+const art = require('./art');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
@@ -35,10 +36,8 @@ module.exports = yo.Base.extend({
 		let done = this.async();
 
 		if (!this.skipDefault) {
-			// Have Yeoman greet the user.
-			this.log(yosay(
-				'Welcome to the ' + chalk.bold.green('frontend-incubator') + ' generator!'
-			));
+			// Have the Incentronaut greet the user.
+			this.log(art.incentronaut);
 		}
 
 		let prompts = [{
