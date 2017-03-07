@@ -129,7 +129,7 @@ module.exports = yo.Base.extend({
 			this.destinationPath('config.json'),
 			{
 				paths: this.settings.paths,
-				esVersion: this.props.es2015orLoose ? 'es2015-loose' : 'es2015',
+				esVersion: this.props.es2015orLoose ? ["es2015", {"loose": true}] : 'es2015',
 				ftp: {
 					host: this.props.ftpHost || '',
 					user: this.props.ftpUser || '',
