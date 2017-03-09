@@ -54,6 +54,9 @@
         "autoprefix": {
             "support": "last 2 versions, Explorer >= 8, Firefox >= 25"
         },
-        "es2015": "<%= esVersion %>"
+        "es2015": [
+          "es2015", {
+          "loose": <%= esVersion %>
+        }]
     }
 }
