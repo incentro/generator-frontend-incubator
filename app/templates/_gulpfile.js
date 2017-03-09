@@ -174,13 +174,12 @@ gulp.task('compile:pattern_library', (callback) => {
 
 	let exec = require('child_process').exec;
 	exec(
-		'node ./node_modules/kss/bin/kss-node ' +
+		'node ./node_modules/kss/bin/kss ' +
 		[
 			'--source=' + config.path.src.asset.scss,
 			'--destination=' + config.path.build.patternLibrary.root,
 			'--css=' + config.path.buildUrl.css + '/site.css',
-			'--js=' + config.path.buildUrl.javascript + '/site.js',
-			'--template=' + config.path.src.patternLibrary.template
+			'--js=' + config.path.buildUrl.javascript + '/site.js'
 		].join(' '),
 		(error, stdout, stderr) => {
 			if (error) {
