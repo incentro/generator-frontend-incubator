@@ -1,6 +1,6 @@
 {
   "name": "generator-frontend-incubator",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Generator for the Incentro Frontend Incubator",
   "repository": "incentro/generator-frontend-incubator",
   "keywords": [
