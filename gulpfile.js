@@ -1,7 +1,11 @@
 'use strict';
+const path = require('path');
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 
+gulp.task('nsp', (cb) => {
+	$.nsp({package: path.resolve('package.json')}, cb);
+});
 
 gulp.task('pre-test', () => {
 	return gulp.src('generators/**/*.js')
@@ -34,4 +38,5 @@ gulp.task('watch', () => {
 	gulp.watch(['generators/**/*.js', 'test/**'], ['test']);
 });
 
+gulp.task('prepublish', ['nsp']);
 gulp.task('default', ['test']);
