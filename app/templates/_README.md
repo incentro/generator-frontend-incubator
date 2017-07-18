@@ -135,7 +135,7 @@ Directory structure
 		* **javascript** - browserify enabled javascript (please look into bower.json for dependencies)
 		* **scss** - styling files, structure based on DoCSSa
 	* **site** - prototype site displaying
-		* **template** - templates needing to be rendered by swig
+		* **template** - templates needing to be rendered by nunjucks
 		* **webroot** - static files needing to be available in prototype
 			* **static** - sample files, normally managed by the cms
 	* **pattern_library** -
