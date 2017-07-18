@@ -134,24 +134,8 @@ gulp.task('compile:html', () => {
 			'!' + config.path.src.prototype.template + '/layout/**/*'
 		])
 		.pipe($.plumber())
-		.pipe($.swig({
-			defaults: {
-				cache: false
-			},
-			data: {
-				config: config
-			}
-		}))
-		.pipe($.htmltidy({
-			doctype: 'html5',
-			hideComments: false,
-			'fix-bad-comments': false,
-			wrap: 0,
-			indent: true,
-			'indent-spaces': 4,
-			'drop-empty-elements': false,
-			'new-blocklevel-tags': 'main'
-		}))
+		.pipe(data(() => ({config: config})))
+		.pipe($.nunjucks())
 		.pipe(gulp.dest(config.path.build.prototype.template))
 		.pipe($.size({title: 'site:html'}));
 });
