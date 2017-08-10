@@ -134,8 +134,8 @@ gulp.task('compile:html', () => {
 			'!' + config.path.src.prototype.template + '/layout/**/*'
 		])
 		.pipe($.plumber())
-		.pipe(data(() => ({config: config})))
-		.pipe($.nunjucks())
+		.pipe($.data(() => ({config: config})))
+		.pipe($.nunjucks.compile())
 		.pipe(gulp.dest(config.path.build.prototype.template))
 		.pipe($.size({title: 'site:html'}));
 });
