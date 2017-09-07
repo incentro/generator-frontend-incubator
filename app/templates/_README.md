@@ -119,6 +119,11 @@ Some code changes require the build cache to be cleared. You can use the followi
     gulp clean
 
 
+### Deploy to ftp server
+Some code changes require the build cache to be cleared. You can use the following command:
+
+    gulp deploy 
+
 
 #### Configuration
 - `package.json` development dependencies installed by `npm install` command

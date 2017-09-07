@@ -10,11 +10,11 @@ const browserSync = require('browser-sync');
 const through2 = require('through2');
 const browserify = require('browserify');
 const path = require('path');
+const ftp = require('vinyl-ftp');
 const reload = browserSync.reload;
 const yargs = require('yargs').argv;
 const minify = yargs.minify ? true : false;
 const tunnel = yargs.tunnel ? yargs.tunnel : false;
-
 const config = require('./config.json');
 
 yargs.ftpDeploy = yargs.ftpDeploy || {};
@@ -269,10 +269,18 @@ gulp.task('help', () => {
 
 //deploy @TODO: replace by Bamboo [kre]
 gulp.task('deploy', ['clean', 'compile'], () => {
-	return gulp.src(config.path.build.root + '/**/*')
-		.pipe($.ftp({
-			host: config.ftpDeploy.host,
-			user: config.ftpDeploy.username,
-			pass: config.ftpDeploy.password
-		}));
+	const conn = ftp.create( {
+		host:     config.ftpDeploy.host,
+		user:     config.ftpDeploy.username,
+		password: config.ftpDeploy.password,
+		parallel: 10
+	} );
+
+	const globs = [
+		config.path.build.root + '/**'
+	];
+
+	return gulp.src( globs, { base: '.', buffer: false } )
+		.pipe( conn.dest( '/public_html' ) );
+
 });
