@@ -265,7 +265,7 @@ gulp.task('help', () => {
 		.pipe($.list());
 });
 
-//deploy @TODO: replace by Bamboo [kre]
+
 gulp.task('deploy', ['clean', 'compile'], () => {
 	const conn = ftp.create( {
 		host:     config.ftpDeploy.host,
