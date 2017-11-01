@@ -156,15 +156,13 @@ gulp.task('compile:sample_content', () => {
 // Generate pattern library with templates
 gulp.task('compile:pattern_library', (callback) => {
 
+	// original execution code
 	let exec = require('child_process').exec;
 	exec(
-		'node ./node_modules/kss/bin/kss-node ' +
+		'node ./node_modules/kss/bin/kss ' +
 		[
-			'--source=' + config.path.src.asset.scss,
-			'--destination=' + config.path.build.patternLibrary.root,
-			'--css=' + config.path.buildUrl.css + '/site.css',
-			'--js=' + config.path.buildUrl.javascript + '/site.js',
-			'--template=' + config.path.src.patternLibrary.template
+			'--verbose',
+			'--config ./config-kss.json'
 		].join(' '),
 		(error, stdout, stderr) => {
 			if (error) {
@@ -267,7 +265,7 @@ gulp.task('help', () => {
 		.pipe($.list());
 });
 
-//deploy @TODO: replace by Bamboo [kre]
+
 gulp.task('deploy', ['clean', 'compile'], () => {
 	const conn = ftp.create( {
 		host:     config.ftpDeploy.host,

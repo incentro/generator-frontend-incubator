@@ -1,0 +1,18 @@
+{
+  "source": [
+    "src/asset/scss"
+  ],
+  "destination": "build/pattern_library",
+  "css": [
+    "/asset/css/site.css"
+  ],
+  "js": [
+    "/asset/javascript/site.js"
+  ],
+  "builder": "node_modules/frontend-incubator-kss-template/build",
+  "homepage": "/README.md",
+  "nav-depth": 3,
+  "custom": [
+    "Colors"
+  ]
+}
