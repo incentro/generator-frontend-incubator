@@ -11,5 +11,8 @@
   ],
   "builder": "node_modules/frontend-incubator-kss-template/build",
   "homepage": "/README.md",
-  "nav-depth": 3
+  "nav-depth": 3,
+  "custom": [
+    "Colors"
+  ]
 }
