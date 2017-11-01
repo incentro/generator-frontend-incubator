@@ -45,6 +45,7 @@
   },
   "dependencies": [
     "babelify",
+    "babel-core",
     "browser-sync",
     "browserify",
     "frontend-incubator-kss-template",
