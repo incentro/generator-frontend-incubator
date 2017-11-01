@@ -147,7 +147,7 @@ module.exports = yo.Base.extend({
 			}
 		);
 
-		let simpleCopyFiles = ['.editorconfig', '.gitattributes', '.gitignore', '.jshintrc', 'gulpfile.js', 'tasks.json'];
+		let simpleCopyFiles = ['.editorconfig', '.gitattributes', '.gitignore', '.jshintrc', 'gulpfile.js', 'tasks.json', 'config-kss.json'];
 		if (this.props.useSasslint) {
 			simpleCopyFiles.push('.sass-lint.yml');
 		}
