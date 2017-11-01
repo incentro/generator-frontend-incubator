@@ -50,20 +50,17 @@ Coding conventions
 It is recommended to use the [google javascript style guide](https://google.github.io/styleguide/javascriptguide.xml) as a base for coding style.
 
 #### SCSS ( CSS )
-<% if (itcss) { -%>
-Currently the [ITCSS](http://itcss.io/) system is being implemented as a CSS architecture. [Read all about ITCSS here](https://speakerdeck.com/dafed/managing-css-projects-with-itcss).
+Currently the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) principals.
 
 This means the css is ordered in:
 
- * **Settings** - Global variables, config switches.
- * **Tools** - Default mixins and functions.
- * **Generic** - Ground-zero styles (Normalize.css, resets, box-sizing).
- * **Base** - Unclassed HTML elements (type selectors).
- * **Objects** - Cosmetic-free design patterns.
- * **Components** - Designed components, chunks of UI.
- * **Trumps** - Helpers and overrides.
+ * **base** - Global variables, config switches, mixins and reset
+ * **elements** - All element styling here like lists, dropdowns, autocomplete, etc.
+ * **components** - Components
+ * **compositions** - Compositions are multiple components/elements that form a bigger picture.
+ * **layout** - All layout styling here
+ 
 
-<% } -%>
 
 BEM is used for class naming. BEM stands for Block, element, modifier.
 
@@ -138,7 +135,7 @@ Directory structure
 		* **font** - fonts enabled in css
 		* **image** - images used in layout
 		* **javascript** - browserify enabled javascript (please look into bower.json for dependencies)
-		* **scss** - styling files, structure based on DoCSSa
+		* **scss** - styling files
 	* **site** - prototype site displaying
 		* **template** - templates needing to be rendered by nunjucks
 		* **webroot** - static files needing to be available in prototype

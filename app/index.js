@@ -69,11 +69,6 @@ module.exports = yo.Base.extend({
 				checked: true
 			}]
 		}, {
-			name: 'itcss',
-			message: 'Do you want to use ITCSS?',
-			default: true,
-			type: 'confirm'
-		}, {
 			name: 'useSasslint',
 			message: 'Do you want to use sass-lint?',
 			default: true,
@@ -142,8 +137,7 @@ module.exports = yo.Base.extend({
 			this.templatePath('_README.md'),
 			this.destinationPath('README.md'),
 			{
-				name: this.props.projectName,
-				itcss: this.props.itcss
+				name: this.props.projectName
 			}
 		);
 
@@ -177,18 +171,12 @@ module.exports = yo.Base.extend({
 		this.fs.write(paths.asset.font + keep, keepText);
 
 
-		if (this.props.itcss) {
-			this.fs.copy(this.templatePath('src/asset/scss/settings/_settings.scss'), this.destinationPath(stylePath + '/settings/_settings.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/tools/_tools.scss'), this.destinationPath(stylePath + '/tools/_tools.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/generic/_generic.scss'), this.destinationPath(stylePath + '/generic/_generic.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/base/_base.scss'), this.destinationPath(stylePath + '/base/_base.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/components/_components.scss'), this.destinationPath(stylePath + '/components/_components.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/theme/_theme.scss'), this.destinationPath(stylePath + '/theme/_theme.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/trumps/_trumps.scss'), this.destinationPath(stylePath + '/trumps/_trumps.scss'));
-			this.fs.copy(this.templatePath('src/asset/scss/itcss.scss'), this.destinationPath(stylePath + '/site.scss'));
-		} else {
-			this.fs.copy(this.templatePath('src/asset/scss/site.scss'), this.destinationPath(stylePath + '/site.scss'));
-		}
+		this.fs.copy(this.templatePath('src/asset/scss/1.base/__base.scss'), this.destinationPath(stylePath + '/1.base/__base.scss'));
+		this.fs.copy(this.templatePath('src/asset/scss/2.elements/__elements.scss'), this.destinationPath(stylePath + '/2.elements/__elements.scss'));
+		this.fs.copy(this.templatePath('src/asset/scss/3.components/__components.scss'), this.destinationPath(stylePath + '/3.components/__components.scss'));
+		this.fs.copy(this.templatePath('src/asset/scss/4.compositions/__compositions.scss'), this.destinationPath(stylePath + '/4.compositions/__compositions.scss'));
+		this.fs.copy(this.templatePath('src/asset/scss/5.layout/__layout.scss'), this.destinationPath(stylePath + '/5.layout/__layout.scss'));
+		this.fs.copy(this.templatePath('src/asset/scss/site.scss'), this.destinationPath(stylePath + '/site.scss'));
 
 		this.bulkDirectory(paths.prototype.template, paths.prototype.template);
 		this.fs.write(paths.prototype.data + keep, keepText);

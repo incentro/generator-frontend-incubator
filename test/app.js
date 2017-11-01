@@ -34,7 +34,7 @@ describe('generator-frontend-incubator:app', () => {
 
 		it('creates assets', () => {
 			assert.file([
-				'src/asset/scss/components/_components.scss',
+				'src/asset/scss/3.components/__components.scss',
 				'src/asset/scss/site.scss',
 				'src/asset/javascript/site.js',
 				'src/asset/font',

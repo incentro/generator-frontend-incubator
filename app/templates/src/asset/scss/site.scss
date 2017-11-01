@@ -1,9 +1,7 @@
-// Initialize CSS
-// http://jeroenoomsnl.github.io/initialize-css/
-@import "node_modules/initialize-css/dist/_initialize.scss";
+// Using http://itcss.io/ structure
+@import "1.base/_base";
+@import "2.elements/_elements";
+@import "3.components/_components";
+@import "4.compositions/_compositions";
+@import "5.layout/_layout";
 
-// Base
-//
-// Start writing styles here
-//
-// Styleguide base
